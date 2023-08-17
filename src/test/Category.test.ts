@@ -1,10 +1,9 @@
-import request, { Request } from "supertest";
+import request from "supertest";
 import { Express } from "express";
 import Database from "../Database";
 import App from "../App";
 import { categoryHelper, managerHelper } from "./helper/helper";
-import mongoose, { Mongoose, isValidObjectId } from "mongoose";
-import exp from "constants";
+import mongoose, { isValidObjectId } from "mongoose";
 
 describe("test Category", () => {
    let app: Express;

@@ -6,6 +6,7 @@ import Database from "./Database";
 import UserRoutes from "./routes/Users.routes";
 import CategoryRouter from "./routes/Category.routes";
 import ProductRoutes from "./routes/Product.routes";
+import PaymentRouter from "./routes/Payment.routes";
 
 export default class App {
    private static instance: App;
@@ -20,13 +21,15 @@ export default class App {
    private userRoutes: UserRoutes;
    private categoryRoutes: CategoryRouter;
    private productRoutes: ProductRoutes;
+   private paymentRoutes: PaymentRouter;
 
    private constructor() {
       this.app = express();
       this.database = Database.getInstance();
-      this.userRoutes = new UserRoutes();
-      this.categoryRoutes = new CategoryRouter();
-      this.productRoutes = new ProductRoutes();
+      this.userRoutes = UserRoutes.getInstance();
+      this.categoryRoutes = CategoryRouter.getInstance();
+      this.productRoutes = ProductRoutes.getInstance();
+      this.paymentRoutes = PaymentRouter.getInstance();
 
       this.middlewares();
       this.databaseConnection();
@@ -52,19 +55,22 @@ export default class App {
             .json({
                users: {
                   "GET all": "/api/v1/users",
-          "GET, PUT, DELETE":        "/api/v1/user/:idUser" ,
-                  "POST": "/api/v1/user/signUp",
+                  "GET, PUT, DELETE": "/api/v1/user/:idUser",
+                  POST: "/api/v1/user/signUp",
                   "POST ": "/api/v1/user/signIn",
                },
                products: {
                   "GET all": "/api/v1/products",
-                "GET, PUT, DELETE":  "/api/v1/product/:idProduct" ,
-              "POST":     "/api/v1/product",
+                  "GET, PUT, DELETE": "/api/v1/product/:idProduct",
+                  POST: "/api/v1/product",
                },
                categories: {
                   "GET all": "/api/v1/categories",
-                  "GET, PUT, DELETE":"/api/v1/category/:idCategory" ,
-               "POST":    "/api/v1/category",
+                  "GET, PUT, DELETE": "/api/v1/category/:idCategory",
+                  POST: "/api/v1/category",
+               },
+               payment: {
+                  POST: "/api/v1/createPayment",
                },
             })
             .status(200);
@@ -75,6 +81,8 @@ export default class App {
       this.app.use("/api/v1", this.categoryRoutes.getRouter());
 
       this.app.use("/api/v1", this.productRoutes.getRouter());
+
+      this.app.use("/api/v1", this.paymentRoutes.getRouter());
    };
 
    public getApp() {
