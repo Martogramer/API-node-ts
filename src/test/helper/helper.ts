@@ -32,11 +32,17 @@ const userHelper= {
     name: "XXXXXXXXXXXXXX",
  }
 
+ const paymentHelper = {
+    title: "XXXXXXXXXXXXXX",
+    unit_price: 9999,
+    quantity: 100
+ }
+
 
 export{
     managerHelper,
     userHelper,
     productHelper,
     categoryHelper,
-
+    paymentHelper
 }

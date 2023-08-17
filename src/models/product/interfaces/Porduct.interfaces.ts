@@ -12,5 +12,4 @@ export default interface IProduct extends Document{
     size: string | undefined;
     statusProduct: boolean;
     category: ObjectId;
-
 }
