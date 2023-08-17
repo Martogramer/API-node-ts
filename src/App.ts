@@ -26,7 +26,7 @@ export default class App {
       this.database = Database.getInstance();
       this.userRoutes = new UserRoutes();
       this.categoryRoutes = new CategoryRouter();
-      this.productRoutes =new  ProductRoutes();
+      this.productRoutes = new ProductRoutes();
 
       this.middlewares();
       this.databaseConnection();
@@ -42,39 +42,39 @@ export default class App {
 
    private async databaseConnection() {
       const prueba = await this.database.connect();
-      
+
       return prueba;
    }
 
    private routes = () => {
       this.app.get("/", (req, res) => {
-         return res.json({
-            users:{
-               "/api/v1/users": "GET all",
-               "/api/v1/user/:idUser": "GET, PUT, DELETE",
-               "/api/v1/user/signUp": "POST",
-               "/api/v1/user/signIn": "POST",
-            },
-            products:{
-               "/api/v1/products": "GET all",
-               "/api/v1/product/:idProduct": "GET, PUT, DELETE",
-               "/api/v1/product": "POST",
-            },
-            categories:{
-               "/api/v1/categories": "GET all",
-               "/api/v1/category/:idCategory": "GET, PUT, DELETE",
-               "/api/v1/category": "POST",
-            }
-         }).status(200);
+         return res
+            .json({
+               users: {
+                  "GET all": "/api/v1/users",
+          "GET, PUT, DELETE":        "/api/v1/user/:idUser" ,
+                  "POST": "/api/v1/user/signUp",
+                  "POST ": "/api/v1/user/signIn",
+               },
+               products: {
+                  "GET all": "/api/v1/products",
+                "GET, PUT, DELETE":  "/api/v1/product/:idProduct" ,
+              "POST":     "/api/v1/product",
+               },
+               categories: {
+                  "GET all": "/api/v1/categories",
+                  "GET, PUT, DELETE":"/api/v1/category/:idCategory" ,
+               "POST":    "/api/v1/category",
+               },
+            })
+            .status(200);
       });
-      
-         this.app.use("/api/v1", this.userRoutes.getRouter());
 
-         this.app.use("/api/v1", this.categoryRoutes.getRouter());
+      this.app.use("/api/v1", this.userRoutes.getRouter());
 
-         this.app.use("/api/v1", this.productRoutes.getRouter());
-         
-    
+      this.app.use("/api/v1", this.categoryRoutes.getRouter());
+
+      this.app.use("/api/v1", this.productRoutes.getRouter());
    };
 
    public getApp() {
