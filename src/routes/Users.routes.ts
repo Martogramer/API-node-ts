@@ -3,7 +3,6 @@ import UserController from "../controllers/Users.controllers";
 import AuthControllers from "../controllers/Auth.controllers";
 
 
-
 export default class UserRoutes{
     private static instance: UserRoutes;
     private userController: UserController

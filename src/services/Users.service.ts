@@ -3,6 +3,7 @@ import UserManager from "../models/users/manager/UserManager";
 export default class UserService {
    private static instance: UserService;
    private userManager: UserManager;
+   
 
    private constructor() {
       this.userManager = UserManager.getInstance();

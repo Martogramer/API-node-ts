@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import UserManager from "../models/users/manager/UserManager";
-
 import UserService from "../services/Users.service";
 import UserDTO from "../models/users/DTO/User.DTO";
 import UserBuilder from "../models/users/build/User.build";
