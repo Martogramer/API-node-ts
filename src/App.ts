@@ -56,8 +56,8 @@ export default class App {
                users: {
                   "GET all": "/api/v1/users",
                   "GET, PUT, DELETE": "/api/v1/user/:idUser",
-                  POST: "/api/v1/user/signUp",
-                  "POST ": "/api/v1/user/signIn",
+                  POST: "/api/v1/signUp",
+                  "POST ": "/api/v1/signIn",
                },
                products: {
                   "GET all": "/api/v1/products",

@@ -16,7 +16,7 @@ const userHelper= {
     email: "XXXXXXXXXXXXXX",
     password: "XXXXXXXXXXXXXX",
     username: "XXXXXXXXXXXXXX",
-    confirPassword: "XXXXXXXXXXXXXX",
+    confirmPassword: "XXXXXXXXXXXXXX",
     name: "XXXXXXXXXXXXXX",
  };
 
