@@ -17,14 +17,14 @@ export default class AuthControllers {
    }
 
    signUp = async (req: Request, res: Response) => {
-      const { email, username, password, name, confirmPassword } = req.body;
+      const { email, username, password, name, confirPassword } = req.body;
 
       if (!email || !username || !password || !name) {
          return res
             .status(400)
             .json({ message: "Please, send all the fields" });
       }
-      if (password !== confirmPassword) {
+      if (password !== confirPassword) {
          return res.status(400).json({ message: "The passwords do not match" });
       }
 
