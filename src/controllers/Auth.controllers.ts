@@ -17,30 +17,18 @@ export default class AuthControllers {
    }
 
    signUp = async (req: Request, res: Response) => {
-      const { email, username, password, name, confirPassword } = req.body;
+      const { email, username, password, name, confirmPassword } = req.body;
 
       if (!email || !username || !password || !name) {
          return res
             .status(400)
             .json({ message: "Please, send all the fields" });
       }
-      if (password !== confirPassword) {
+      if (password !== confirmPassword) {
          return res.status(400).json({ message: "The passwords do not match" });
       }
 
-      //   const newUser: UserDTO = {
-      //     email,
-      //     username,
-      //     password,
-      //     name,
-      //     address:'',
-      //     avatar:'',
-      //     phone:'',
-      //     city:'',
-      //     country:'',
-      //     lastname:''
-
-      //   }
+      
 
       const newUser: UserDTO = this.userBuilder
          .withEmail(email)
@@ -95,12 +83,12 @@ export default class AuthControllers {
 
    // registerAdmin = async (req: Request, res: Response) => {
    //    try {
-   //       const { email, password, username, confirPassword } = req.body;
+   //       const { email, password, username, confirmPassword } = req.body;
 
    //       if (!email || !password || !username)
    //          return res.status(400).json({ msg: "Please, send all the fields" });
 
-   //       if (password !== confirPassword)
+   //       if (password !== confirmPassword)
    //          return res.status(400).json({ msg: "The passwords do not match" });
 
    //       const admin = await this.userManager.createAdmin(

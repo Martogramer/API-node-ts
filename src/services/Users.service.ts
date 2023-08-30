@@ -61,7 +61,7 @@ export default class UserService {
          if (!isMatch) {
             return { status: 401, message: "The password does not valid" };
          }
-         return {token:this.userManager.createToken(user)};
+         return {token:this.userManager.createToken(user),user};
       } catch (error) {
          throw error;
       }
